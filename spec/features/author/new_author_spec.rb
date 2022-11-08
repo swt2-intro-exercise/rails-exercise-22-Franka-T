@@ -10,6 +10,6 @@ describe "New author page", type: :feature do
     # these are the standard names given to inputs by the Rails from builder
     expect(page).to have_field('author[first_name]')
     expect(page).to have_field('author[last_name]')
-    expect(page).to have_field('author[first name]')
+    expect(page).to have_field('author[homepage]')
   end
 end
