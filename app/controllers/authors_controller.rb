@@ -1,13 +1,17 @@
 class AuthorsController < ApplicationController
     def new
+        @author = Author.new
     end
 
     def create
-        #@author = Author.new(author_params)
-        @author = Author.new(params.require(:author).permit(:first_name, :last_name, :homepage))
+        @author = Author.new(author_params)
+        #@author = Author.new(params.require(:author).permit(:first_name, :last_name, :homepage))
 
-        @author.save
-        redirect_to @author
+        if @author.save
+            redirect_to @author
+        else 
+            render 'new'
+        end
     end
 
     def index

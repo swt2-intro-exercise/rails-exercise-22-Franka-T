@@ -19,6 +19,7 @@ describe "Author object", type: :model do
 
   it "should not validate author with a last name that is empty" do
     author = Author.new(first_name: "Alan", last_name: "", homepage: "https://en.wikipedia.org/wiki/Alan_Turing")
-    expect(@author.)to_not be_valid
+    expect(author).to_not be_valid
   end
+
 end
