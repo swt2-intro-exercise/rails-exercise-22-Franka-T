@@ -7,4 +7,18 @@ describe "New paper paper", type: :model do
     expect(paper.title).to eq("My Paper")
     expect(paper.year).to eq(2022)
   end
+
+  it "should not validate when title, venue or year is empty" do
+    paper1 = Paper.new(title: "My Paper", venue: "venue", year:"" )
+    expect(paper1).to_not be_valid
+    paper2 = Paper.new(title: "My Paper", venue:"" , year: 2022 )
+    expect(paper2).to_not be_valid
+    paper2 = Paper.new(title:"" , venue: "venue", year: 2022 )
+    expect(paper2).to_not be_valid
+  end
+
+  it "should not validate when year is not a numeric value" do
+    paper1 = Paper.new(title: "My Paper", venue: "venue", year: "hallo" )
+    expect(paper1).to_not be_valid
+  end
 end
