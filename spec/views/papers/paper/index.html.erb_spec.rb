@@ -28,4 +28,9 @@ RSpec.describe "papers/index", type: :view do
     visit papers_path
     expect(page).to have_link('Edit')
   end
+
+  it "should have an link to delete a paper" do
+    visit papers_path
+    expect(paper).to have_link('Delete')
+  end
 end
