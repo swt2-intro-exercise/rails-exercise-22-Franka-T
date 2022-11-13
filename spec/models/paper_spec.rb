@@ -24,6 +24,6 @@ describe "New paper page", type: :model do
 
   it "should have an empty list of authors" do
     paper = Paper.new(title: "My Paper", venue: "venue", year: 2022)
-    expect(@paper.authors).to eq([])
+    expect(paper.authors).to eq([])
   end
 end
