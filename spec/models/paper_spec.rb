@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "New paper paper", type: :model do
+describe "New paper page", type: :model do
   it "should have a working constructor" do
     paper = Paper.new(title: "My Paper", venue: "venue", year: 2022)
     expect(paper.venue).to eq("venue")
@@ -20,5 +20,10 @@ describe "New paper paper", type: :model do
   it "should not validate when year is not a numeric value" do
     paper1 = Paper.new(title: "My Paper", venue: "venue", year: "hallo" )
     expect(paper1).to_not be_valid
+  end
+
+  it "should have an empty list of authors" do
+    paper = Paper.new(title: "My Paper", venue: "venue", year: 2022)
+    expect(@paper.authors).to eq([])
   end
 end
