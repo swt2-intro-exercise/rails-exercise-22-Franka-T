@@ -17,8 +17,8 @@ RSpec.describe "papers/show", type: :view do
   end
 
   it "should display the full name of the author" do
-    @compunting_paper = FactoryBot.create :paper
-    vist papers_path(@computing_paper)
+    @computing_paper = FactoryBot.create :paper
+    visit papers_path(@computing_paper)
     @computing_paper.authors.each do |author|
       expect(page).to have_text(author.name)
     end
