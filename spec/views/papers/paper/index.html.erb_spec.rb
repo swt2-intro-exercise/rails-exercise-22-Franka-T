@@ -33,4 +33,27 @@ RSpec.describe "papers/index", type: :view do
     visit papers_path
     expect(page).to have_link('Delete')
   end
+
+  context "given a paper from 1950 and a Paper from 1968" do
+    before :each do
+        @paper1 = Paper.new(
+            title: 'Paper1',
+            venue: 'venue',
+            year: 1950
+        )
+        @paper1.save
+        @paper2 = Paper.new(
+            title: 'Paper2',
+            venue: 'venue',
+            year: 1968
+        )
+        @paper2.save
+    end
+ 
+    it "should only show the paper1 when year in url matches" do
+        visit papers_path + "?year=1950"
+        expect(page).to have_xpath("//a[@href='#{paper_path(@paper1)}']")
+        expect(page).not_to have_xpath("//a[@href='#{paper_path(@paper2)}']")
+    end
+  end
 end
