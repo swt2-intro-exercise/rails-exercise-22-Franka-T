@@ -25,4 +25,9 @@ RSpec.describe "papers/edit", type: :view do
       assert_select "input[name=?]", "paper[year]"
     end
   end
+
+  it "shoukd allow the selection of authors" do
+    visit edit_paper_path(paper)
+    expect(page).to have_css('select[multiple]')
+  end
 end
